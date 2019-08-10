@@ -1,6 +1,7 @@
 {
     "name": "mpakfm/russian-date-time",
     "description": "Русский вывод строковых значений format character (D, l, F, f, M)",
+    "version": "1.0.0",
     "type": "composer-plugin",
     "license": "MIT",
     "authors": [
