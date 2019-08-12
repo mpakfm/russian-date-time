@@ -16,6 +16,10 @@ class ListFormatTest extends TestCase {
         $this->assertEquals('в 12:00 Понедельник 5, Вторник 6 2019г.', $response);
         $response = RussianDateTime::listFormat("j F", $begin, $end, 0, 1, '; ');
         $this->assertEquals('5; 6 Августа', $response);
+        $response = RussianDateTime::listFormat("j f", $begin, $end);
+        $this->assertEquals('5, 6 августа', $response);
+        $response = RussianDateTime::listFormat("j M", $begin, $end);
+        $this->assertEquals('5, 6 Авг', $response);
         $response = RussianDateTime::listFormat("F j", $begin, $end, RussianDateTime::FORMAT_NAME, RussianDateTime::FORMAT_NAME);
         $this->assertEquals('Август 5, 6', $response);
         $response = RussianDateTime::listFormat("F j Yг. в H:i", $begin, $end, RussianDateTime::FORMAT_NAME, RussianDateTime::FORMAT_NAME);

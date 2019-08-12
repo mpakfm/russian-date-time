@@ -4,7 +4,7 @@
  * 
  * @author mpakfm <mpakfm@google.com>
  * @package \Mpakfm\RussianDateTime
- * @version 1.0.1
+ * @version 1.0.2
  */
 
 namespace Mpakfm;
@@ -16,9 +16,9 @@ class RussianDateTime {
     const FORMAT_TYPE_UC_WORDS   = 2; // Пятница 3 февраля
     const FORMAT_TYPE_UC_ALL     = 3; // ПЯТНИЦА 3 ФЕВРАЛЯ
 
-    const FORMAT_NAME = 0;
-    const FORMAT_BY   = 1;
-    const FORMAT_INTO = 2;
+    const FORMAT_NAME = 0; // пятница февраль
+    const FORMAT_BY   = 1; // пятницы февраля
+    const FORMAT_INTO = 2; // пятницу феврале
 
     const DEFAULT_DELIMITER = ', ';
 
@@ -31,7 +31,7 @@ class RussianDateTime {
     ];
 
     private static $phpMonthFormat = [
-        'F', 'm', 'M', 'n', 't',
+        'F', 'm', 'M', 'n', 't', 'f',
     ];
 
     private static $phpYearFormat = [
