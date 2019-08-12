@@ -4,12 +4,10 @@
  * 
  * @author mpakfm <mpakfm@google.com>
  * @package \Mpakfm\RussianDateTime
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 namespace Mpakfm;
-
-use mysql_xdevapi\Exception;
 
 class RussianDateTime {
 
