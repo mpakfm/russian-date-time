@@ -11,9 +11,10 @@
         }
     ],
     "require": {
-		"php":">=7.0.0"
-	},
-	"autoload":{
+        "php":">=7.0.0",
+        "ext-mbstring": "*"
+    },
+    "autoload":{
         "psr-4":{
             "Mpakfm\\":""
         }
