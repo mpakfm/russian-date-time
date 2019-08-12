@@ -3,8 +3,15 @@
 use Mpakfm\RussianDateTime;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class FormatTest
+ * @covers RussianDateTime::format
+ */
 class FormatTest extends TestCase {
-    
+
+    /**
+     * Тест вывода параметра D - первая буква upper case (ucf), первые два символа от названия дня недели, русский традиционный
+     */
     public function testFormatD() {
         $dt = date_create_from_format('d.m.Y H:i:s', '05.08.2019 12:00:00');
         $response = RussianDateTime::format('D', $dt);
@@ -40,7 +47,10 @@ class FormatTest extends TestCase {
         $response = RussianDateTime::format('d.m D Yг.', $dt);
         $this->assertEquals('11.08 Вс 2019г.', $response);
     }
-    
+
+    /**
+     * Тест вывода параметра l - первая буква upper case (ucf)
+     */
     public function testFormatl() {
         $dt = date_create_from_format('d.m.Y H:i:s', '05.08.2019 12:00:00');
         $response = RussianDateTime::format('l', $dt);
@@ -104,7 +114,10 @@ class FormatTest extends TestCase {
         $response = RussianDateTime::format('d.m l Yг.', $dt);
         $this->assertEquals('11.08 Воскресение 2019г.', $response);
     }
-    
+
+    /**
+     * Тест вывода параметра f - строчный регистр (lower case)
+     */
     public function testFormatf() {
         $dt = date_create_from_format('d.m.Y H:i:s', '05.01.2019 12:00:00');
         $response = RussianDateTime::format('f', $dt);
@@ -210,5 +223,181 @@ class FormatTest extends TestCase {
         
         $response = RussianDateTime::format('l, ', $dt) . RussianDateTime::format('j f Yг.', $dt, RussianDateTime::FORMAT_BY);
         $this->assertEquals('Четверг, 5 декабря 2019г.', $response);
+    }
+
+    /**
+     * Тест вывода параметра F - первая буква upper case (ucf)
+     */
+    public function testFormatFUCF() {
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.01.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Январь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Января', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Январе', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.02.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Февраль', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Февраля', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Феврале', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.03.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Март', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Марта', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Марте', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.04.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Апрель', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Апреля', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Апреле', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.05.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Май', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Мая', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Мае', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.06.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Июнь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Июня', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Июне', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.07.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Июль', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Июля', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Июле', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.08.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Август', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Августа', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Августе', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.09.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Сентябрь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Сентября', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Сентябре', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.10.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Октябрь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Октября', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Октябре', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.11.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Ноябрь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Ноября', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Ноябре', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.12.2019 12:00:00');
+        $response = RussianDateTime::format('F', $dt);
+        $this->assertEquals('Декабрь', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Декабря', $response);
+        $response = RussianDateTime::format('F', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Декабре', $response);
+
+        $response = RussianDateTime::format('j F Y', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('5 Декабря 2019', $response);
+
+        $response = RussianDateTime::format('d l, F Yг.', $dt);
+        $this->assertEquals('05 Четверг, Декабрь 2019г.', $response);
+
+        $response = RussianDateTime::format('l, ', $dt) . RussianDateTime::format('j F Yг.', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Четверг, 5 Декабря 2019г.', $response);
+    }
+
+    /**
+     * Тест вывода параметра M - первая буква upper case (ucf), первые три символа от названия месяца
+     */
+    public function testFormatM() {
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.01.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Янв', $response);
+        $response = RussianDateTime::format('M', $dt, RussianDateTime::FORMAT_BY);
+        $this->assertEquals('Янв', $response);
+        $response = RussianDateTime::format('M', $dt, RussianDateTime::FORMAT_INTO);
+        $this->assertEquals('Янв', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.02.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Фев', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.03.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Мар', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.04.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Апр', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.05.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Май', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.06.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Июн', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.07.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Июл', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.08.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Авг', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.09.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Сен', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.10.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Окт', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.11.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Ноя', $response);
+
+        $dt = date_create_from_format('d.m.Y H:i:s', '05.12.2019 12:00:00');
+        $response = RussianDateTime::format('M', $dt);
+        $this->assertEquals('Дек', $response);
+
+        $response = RussianDateTime::format('j M Y', $dt);
+        $this->assertEquals('5 Дек 2019', $response);
+
+        $response = RussianDateTime::format('d l, M Yг.', $dt);
+        $this->assertEquals('05 Четверг, Дек 2019г.', $response);
+
+        $response = RussianDateTime::format('l, ', $dt) . RussianDateTime::format('j M Yг.', $dt);
+        $this->assertEquals('Четверг, 5 Дек 2019г.', $response);
     }
 }
